@@ -4,32 +4,21 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
-        cur = head
-        dummy = ListNode(0,head)
+    def removeElements(self, head, val):
+        """
+        :type head: ListNode
+        :type val: int
+        :rtype: ListNode
+        """
         
-        while head:
-            if head.val == val:
-                head = head.next
-            else: break
+        dummy_head = ListNode(-1)
+        dummy_head.next = head
         
-        while cur:
-            if cur.val == val:
-                cur = cur.next
-                dummy.next = cur
-                
-                
+        current_node = dummy_head
+        while current_node.next != None:
+            if current_node.next.val == val:
+                current_node.next = current_node.next.next
             else:
-                dummy = cur
-                cur = cur.next
-        return head
-            
-    
+                current_node = current_node.next
                 
-        
-     
-
-            
-        
-                
-       
+        return dummy_head.next
