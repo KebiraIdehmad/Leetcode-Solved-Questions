@@ -12,5 +12,5 @@ class Solution:
             temp = head
             head = temp2
         return temp
-            
+        
        
