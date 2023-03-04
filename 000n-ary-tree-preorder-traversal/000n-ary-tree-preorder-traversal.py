@@ -9,13 +9,16 @@ class Node:
 class Solution:
     
     def preorder(self, root: 'Node') -> List[int]:
+        if not root:return []
+        q = deque([root])
         output = []
-        def dfs(node):
-            if not node:return
-            output.append(node.val)
-            for c in node.children:
-                dfs(c)
-        dfs(root)
+        while q:
+            cand = q.popleft()
+            output.append(cand.val)
+            for c in reversed(cand.children):
+                q.appendleft(c)
         return output
+        
+        
         
         
