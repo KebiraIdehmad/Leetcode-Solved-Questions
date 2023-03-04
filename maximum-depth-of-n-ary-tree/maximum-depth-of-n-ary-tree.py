@@ -8,24 +8,18 @@ class Node:
 
 class Solution:
     def maxDepth(self, root: 'Node') -> int:
-        depth = 0
+        answer = 0
         if not root:return 0
         
-        def bfs(root):
-            nonlocal depth
-            q = deque([root])
-            while q:
-                for i in range(len(q)):
-                    node = q.popleft()
-                    if node.children:
-                        for c in node.children:
-                            q.append(c)
-                depth+=1 
-        bfs(root)
-        return depth
+        def dfs(node, depth):
+            nonlocal answer
+            if not node : return 
+            if not node.children:
+                answer = max(answer, depth+1)
+            for c in node.children:
+                dfs(c, depth+1)
+        dfs(root, 0)
+        return answer
         
-        
-        
-                    
 
             
